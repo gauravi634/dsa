@@ -1,0 +1,44 @@
+﻿Bubble sort
+#include<stdio.h>
+
+int main() 
+{ 
+    int a[100], i, j, n, temp; 
+     
+    printf("Enter the size of the array (max 100): "); 
+    scanf("%d", &n); 
+
+    if (n > 100 || n <= 0) {
+        printf("Invalid array size!");
+        return 1;
+    }
+
+    printf("Enter the array elements:\n"); 
+    for (i = 0; i < n; i++) 
+    { 
+        scanf("%d", &a[i]); 
+    } 
+    
+    // Bubble Sort Logic
+    for (i = 0; i < n - 1; i++) 
+    { 
+        for (j = i + 1; j < n; j++) 
+        { 
+            if (a[i] > a[j]) 
+            { 
+                temp = a[i]; 
+                a[i] = a[j]; 
+                a[j] = temp; 
+            } 
+        } 
+    } 
+    
+    printf("Sorted array: "); 
+    for (i = 0; i < n; i++) 
+    { 
+        printf("%d ", a[i]); 
+    } 
+
+    printf("\n");
+    return 0; 
+}

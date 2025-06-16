@@ -1,0 +1,61 @@
+﻿Queue
+#include <stdio.h>
+#define MAX 10
+
+int main() {
+    int front = -1, rear = -1, i, ch, element, a[MAX], cont;
+
+    do {
+        printf("\n1. Insert\n2. Delete\n3. Display\n4. Exit");
+        printf("\nEnter your choice: ");
+        scanf("%d", &ch);
+
+        switch (ch) {
+            case 1:
+                if (rear == MAX - 1) {
+                    printf("\nQueue is full (Overflow)\n");
+                } else {
+                    printf("Enter element to insert: ");
+                    scanf("%d", &element);
+                    rear++;
+                    a[rear] = element;
+                    printf("Element inserted: %d\n", element);
+                }
+                break;
+
+            case 2:
+                if (rear == front) {
+                    printf("\nQueue is empty (Underflow)\n");
+                } else {
+                    front++;
+                    printf("Element deleted: %d\n", a[front]);
+                }
+                break;
+
+            case 3:
+                if (rear == front) {
+                    printf("\nQueue is empty\n");
+                } else {
+                    printf("\nQueue elements are: ");
+                    for (i = front + 1; i <= rear; i++) {
+                        printf("%d ", a[i]);
+                    }
+                    printf("\n");
+                }
+                break;
+
+            case 4:
+                printf("Exiting...\n");
+                return 0;
+
+            default:
+                printf("\nWrong choice. Please enter a valid option.\n");
+        }
+
+        printf("\nDo you want to continue? (Press 1 for Yes / 0 for No): ");
+        scanf("%d", &cont);
+
+    } while (cont == 1);
+
+    return 0;
+}

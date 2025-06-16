@@ -1,0 +1,32 @@
+﻿Insertion sort
+#include <stdio.h>
+
+int main() {
+    int a[10], n, i, j, temp;
+
+    printf("Enter size of an array (max 10): ");
+    scanf("%d", &n);
+
+    // Check for valid input size
+    if (n < 1 || n > 10) {
+        printf("Invalid size. Please enter a size between 1 and 10.\n");
+        return 1;
+    }
+
+    printf("Enter array elements: ");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    // Insertion sort algorithm
+    for (i = 1; i < n; i++) {
+        temp = a[i];
+        j = i - 1;
+        while (j >= 0 && a[j] > temp) {
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j + 1] = temp;
+    }
+
+    printf("Sorted array: ");
