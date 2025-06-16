@@ -1,45 +1,43 @@
-﻿Stack
 #include <stdio.h>
 #define MAX 10
 
 int main() {
-    int a[MAX], ch, element, n;
-    int top = -1;
+    int stack[MAX], top = -1;
+    int ch, element, cont;
 
     do {
-        printf("\n1. Push\n2. Pop\n3. Display\n4. Exit\n");
+        printf("\n--- Stack Menu ---\n");
+        printf("1. Push\n2. Pop\n3. Display\n4. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &ch);
 
         switch (ch) {
             case 1:
                 if (top == MAX - 1) {
-                    printf("Stack is full (Overflow)\n");
+                    printf("Stack is full (Overflow).\n");
                 } else {
-                    printf("Enter an element: ");
+                    printf("Enter an element to push: ");
                     scanf("%d", &element);
-                    top++;
-                    a[top] = element;
+                    stack[++top] = element;
                     printf("Element %d pushed onto stack.\n", element);
                 }
                 break;
 
             case 2:
                 if (top == -1) {
-                    printf("Stack is empty (Underflow)\n");
+                    printf("Stack is empty (Underflow).\n");
                 } else {
-                    printf("Element %d popped from stack.\n", a[top]);
-                    top--;
+                    printf("Element %d popped from stack.\n", stack[top--]);
                 }
                 break;
 
             case 3:
                 if (top == -1) {
-                    printf("Stack is empty\n");
+                    printf("Stack is empty.\n");
                 } else {
-                    printf("Stack elements:\n");
+                    printf("Stack elements (top to bottom):\n");
                     for (int i = top; i >= 0; i--) {
-                        printf("%d\n", a[i]);
+                        printf("%d\n", stack[i]);
                     }
                 }
                 break;
@@ -49,13 +47,13 @@ int main() {
                 return 0;
 
             default:
-                printf("Invalid choice. Please enter 1-4.\n");
+                printf("Invalid choice! Please select from 1 to 4.\n");
         }
 
-        printf("\nDo you want to continue? (1 = Yes / 0 = No): ");
-        scanf("%d", &n);
+        printf("Do you want to continue? (1 = Yes / 0 = No): ");
+        scanf("%d", &cont);
 
-    } while (n == 1);
+    } while (cont == 1);
 
     return 0;
 }
